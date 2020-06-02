@@ -1,6 +1,7 @@
 import {action, computed, observable} from "mobx";
 import {flatten, fromPairs} from 'lodash';
 import moment from 'moment';
+import { CodeSandboxCircleFilled } from "@ant-design/icons";
 
 const query = {
   me: {
@@ -20,7 +21,7 @@ const query = {
     params: {
       fields: 'id,code,options[code,name]',
       paging: 'false',
-      filter: 'code:in:[SX01,YN01,MD,PD01,TI01]'
+      filter: 'code:in:[SX01,YN01,MD,PD01,TI01,100U,100ATPOINT,100RefLevels]'
     }
   }
 }
@@ -47,6 +48,7 @@ class Store {
   @observable viewMode = false;
   @observable editing = false;
   @observable availableDataElements = [];
+  @observable ICDAltSearchtextA: any;
   @observable allDisabled: any = {
     ZKBE8Xm9DJG: {disabled: false, warning: null},
     ZYKmQ9GPOaF: {disabled: false, warning: null},
@@ -295,6 +297,12 @@ class Store {
       dataValues
     }
 
+
+    const under = {
+      field1: ''
+    }
+
+
     let createMutation: any = {
       type: 'create',
       resource: 'events',
@@ -327,6 +335,18 @@ class Store {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  @action causeOfDeathAltSearch =  (e: any) => {
+    try {
+ const DOBA = e
+      console.log(DOBA)
+      
+
+    } catch (e) {
+      console.log(e);
+    }
+    return e
   }
 
   @action editEvent = () => {
